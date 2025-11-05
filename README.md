@@ -1,8 +1,13 @@
-# AccuWeather MCP Server
+# 🌤️ AccuWeather MCP Server
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![Railway](https://railway.app/button.svg)](https://railway.app)
 
-MCP (Model Context Protocol) server providing weather forecasts and current conditions from AccuWeather API. Designed for integration with AI agents via OpenAI Agent Builder.
+**Model Context Protocol (MCP) server providing global weather forecasts and current conditions.**
+
+Integrates with the [AccuWeather API](https://developer.accuweather.com/) to deliver accurate weather data worldwide. Designed for integration with AI agents via OpenAI Agent Builder to provide farmers with weather intelligence for agricultural planning and decision-making.
 
 ## 🌟 Features
 
@@ -14,10 +19,12 @@ MCP (Model Context Protocol) server providing weather forecasts and current cond
 
 ## 🛠️ Tools
 
-The server exposes 2 MCP tools:
+The server exposes **2 MCP tools**:
 
-1. **`get_accuweather_weather_forecast`**: Returns daily weather forecasts with temperature ranges, precipitation probability, wind speed, and conditions
-2. **`get_accuweather_current_conditions`**: Returns current weather conditions including temperature, humidity, wind, and precipitation status
+| Tool | Purpose |
+|------|---------|
+| `get_accuweather_weather_forecast` | Get daily weather forecasts (1-15 days) with temperature ranges, precipitation probability, wind speed, and conditions for any global location |
+| `get_accuweather_current_conditions` | Get real-time current weather conditions including temperature, humidity, wind speed/direction, and precipitation status |
 
 ## 🚀 Quick Start
 
