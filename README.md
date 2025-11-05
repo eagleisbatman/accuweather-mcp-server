@@ -16,8 +16,8 @@ MCP (Model Context Protocol) server providing weather forecasts and current cond
 
 The server exposes 2 MCP tools:
 
-1. **`get_weather_forecast`**: Returns daily weather forecasts with temperature ranges, precipitation probability, wind speed, and conditions
-2. **`get_current_conditions`**: Returns current weather conditions including temperature, humidity, wind, and precipitation status
+1. **`get_accuweather_weather_forecast`**: Returns daily weather forecasts with temperature ranges, precipitation probability, wind speed, and conditions
+2. **`get_accuweather_current_conditions`**: Returns current weather conditions including temperature, humidity, wind, and precipitation status
 
 ## 🚀 Quick Start
 
@@ -95,7 +95,7 @@ These headers allow the chat widget to pass default coordinates that tools can u
   "id": 1,
   "method": "tools/call",
   "params": {
-    "name": "get_weather_forecast",
+    "name": "get_accuweather_weather_forecast",
     "arguments": {
       "latitude": 9.1450,
       "longitude": 38.7617,
@@ -113,7 +113,7 @@ These headers allow the chat widget to pass default coordinates that tools can u
   "id": 2,
   "method": "tools/call",
   "params": {
-    "name": "get_current_conditions",
+    "name": "get_accuweather_current_conditions",
     "arguments": {
       "latitude": 9.1450,
       "longitude": 38.7617
@@ -215,8 +215,8 @@ This server is designed to work with OpenAI Agent Builder alongside other MCP se
    - **Name:** `accuweather-mcp`
    - **URL:** `https://accuweather-mcp-server.up.railway.app/mcp`
 3. Enable tools in your Agent:
-   - ✅ `get_weather_forecast`
-   - ✅ `get_current_conditions`
+   - ✅ `get_accuweather_weather_forecast`
+   - ✅ `get_accuweather_current_conditions`
 
 See the [Multi-MCP Setup Guide](https://github.com/eagleisbatman/gap-chat-widget/blob/main/AGENT_BUILDER_MULTI_MCP_SETUP.md) for detailed configuration.
 

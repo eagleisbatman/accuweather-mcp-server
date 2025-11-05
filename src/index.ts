@@ -51,8 +51,8 @@ app.get('/', (req, res) => {
       mcp: '/mcp (POST)'
     },
     tools: [
-      'get_weather_forecast',
-      'get_current_conditions'
+      'get_accuweather_weather_forecast',
+      'get_accuweather_current_conditions'
     ]
   });
 });
@@ -82,7 +82,7 @@ app.post('/mcp', async (req, res) => {
 
     // Tool: Get Weather Forecast
     server.tool(
-      'get_weather_forecast',
+      'get_accuweather_weather_forecast',
       'Get weather forecast from AccuWeather API. Returns daily forecasts with temperature, precipitation probability, wind, and conditions.',
       {
         latitude: z.number().min(-90).max(90).optional().describe('Latitude coordinate. Optional if provided in headers.'),
@@ -97,7 +97,7 @@ app.post('/mcp', async (req, res) => {
           const lat = latitude ?? defaultLatitude ?? NAIROBI_LAT;
           const lon = longitude ?? defaultLongitude ?? NAIROBI_LON;
 
-          console.log(`[MCP Tool] get_weather_forecast called: lat=${lat}, lon=${lon}, days=${days}`);
+          console.log(`[MCP Tool] get_accuweather_weather_forecast called: lat=${lat}, lon=${lon}, days=${days}`);
 
           // Validate coordinates
           if (typeof lat !== 'number' || isNaN(lat) || lat < -90 || lat > 90) {
@@ -187,7 +187,7 @@ app.post('/mcp', async (req, res) => {
             }]
           };
         } catch (error: any) {
-          console.error('[MCP Tool] Error in get_weather_forecast:', error);
+          console.error('[MCP Tool] Error in get_accuweather_weather_forecast:', error);
           return {
             content: [{
               type: 'text',
@@ -201,7 +201,7 @@ app.post('/mcp', async (req, res) => {
 
     // Tool: Get Current Conditions
     server.tool(
-      'get_current_conditions',
+      'get_accuweather_current_conditions',
       'Get current weather conditions from AccuWeather API. Returns temperature, conditions, humidity, wind, and precipitation.',
       {
         latitude: z.number().min(-90).max(90).optional().describe('Latitude coordinate. Optional if provided in headers.'),
@@ -214,7 +214,7 @@ app.post('/mcp', async (req, res) => {
           const lat = latitude ?? defaultLatitude ?? NAIROBI_LAT;
           const lon = longitude ?? defaultLongitude ?? NAIROBI_LON;
 
-          console.log(`[MCP Tool] get_current_conditions called: lat=${lat}, lon=${lon}`);
+          console.log(`[MCP Tool] get_accuweather_current_conditions called: lat=${lat}, lon=${lon}`);
 
           if (!accuWeatherClient) {
             return {
@@ -255,7 +255,7 @@ app.post('/mcp', async (req, res) => {
             }]
           };
         } catch (error: any) {
-          console.error('[MCP Tool] Error in get_current_conditions:', error);
+          console.error('[MCP Tool] Error in get_accuweather_current_conditions:', error);
           return {
             content: [{
               type: 'text',
@@ -297,7 +297,7 @@ const server = app.listen(Number(PORT), HOST, () => {
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
   console.log(`🌾 MCP endpoint: http://localhost:${PORT}/mcp`);
   console.log(`🔑 AccuWeather API Key: ${ACCUWEATHER_API_KEY ? '✅ Configured' : '⚠️  NOT CONFIGURED'}`);
-  console.log(`🛠️  Tools: 2 (get_weather_forecast, get_current_conditions)`);
+  console.log(`🛠️  Tools: 2 (get_accuweather_weather_forecast, get_accuweather_current_conditions)`);
   console.log('=========================================');
   console.log('');
 });
